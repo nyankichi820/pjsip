@@ -72,6 +72,7 @@ function config_site() {
         echo "#define PJMEDIA_VIDEO_DEV_HAS_IOS_OPENGL 1" >> "${PJSIP_CONFIG_PATH}"
         echo "#include <OpenGLES/ES3/glext.h>" >> "${PJSIP_CONFIG_PATH}"
     fi
+    echo "#define PJ_HAS_IPV6 1" >> "${PJSIP_CONFIG_PATH}"
     echo "#include <pj/config_site_sample.h>" >> "${PJSIP_CONFIG_PATH}"
 }
 
