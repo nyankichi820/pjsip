@@ -1,4 +1,4 @@
-/* $Id: config.h 5332 2016-06-02 07:36:05Z riza $ */
+/* $Id: config.h 4913 2014-09-03 08:39:58Z nanang $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -161,8 +161,7 @@
 
 
 #elif defined (PJ_M_X86_64) || defined(__amd64__) || defined(__amd64) || \
-	defined(__x86_64__) || defined(__x86_64) || \
-	defined(_M_X64) || defined(_M_AMD64)
+	defined(__x86_64__) || defined(__x86_64)
     /*
      * AMD 64bit processor, little endian
      */
@@ -675,18 +674,12 @@
 #else
     /* When FD_SETSIZE is not changeable, check if PJ_IOQUEUE_MAX_HANDLES
      * is lower than FD_SETSIZE value.
-     *
-     * Update: Not all ioqueue backends require this (such as epoll), so
-     * this check will be done on the ioqueue implementation itself, such as
-     * ioqueue select.
      */
-/*
 #   ifdef FD_SETSIZE
 #	if PJ_IOQUEUE_MAX_HANDLES > FD_SETSIZE
 #	    error "PJ_IOQUEUE_MAX_HANDLES is greater than FD_SETSIZE"
 #	endif
 #   endif
-*/
 #endif
 
 
@@ -862,28 +855,6 @@
  */
 #ifndef PJ_HAS_SSL_SOCK
 #  define PJ_HAS_SSL_SOCK	    0
-#endif
-
-
-/**
- * Define the maximum number of ciphers supported by the secure socket.
- *
- * Default: 256
- */
-#ifndef PJ_SSL_SOCK_MAX_CIPHERS
-#  define PJ_SSL_SOCK_MAX_CIPHERS   256
-#endif
-
-
-/**
- * Specify what should be set as the available list of SSL_CIPHERs. For
- * example, set this as "DEFAULT" to use the default cipher list (Note:
- * PJSIP release 2.4 and before used this "DEFAULT" setting).
- *
- * Default: "HIGH:-COMPLEMENTOFDEFAULT"
- */
-#ifndef PJ_SSL_SOCK_OSSL_CIPHERS
-#  define PJ_SSL_SOCK_OSSL_CIPHERS   "HIGH:-COMPLEMENTOFDEFAULT"
 #endif
 
 
@@ -1217,10 +1188,10 @@ PJ_BEGIN_DECL
 #define PJ_VERSION_NUM_MAJOR	2
 
 /** PJLIB version minor number. */
-#define PJ_VERSION_NUM_MINOR	5
+#define PJ_VERSION_NUM_MINOR	3
 
 /** PJLIB version revision number. */
-#define PJ_VERSION_NUM_REV	1
+#define PJ_VERSION_NUM_REV	0
 
 /**
  * Extra suffix for the version (e.g. "-trunk"), or empty for

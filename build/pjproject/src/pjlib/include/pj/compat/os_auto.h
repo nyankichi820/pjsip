@@ -1,5 +1,5 @@
 /* pjlib/include/pj/compat/os_auto.h.  Generated from os_auto.h.in by configure.  */
-/* $Id: os_auto.h.in 5247 2016-02-25 04:54:17Z nanang $ */
+/* $Id: os_auto.h.in 3841 2011-10-24 09:28:13Z ming $ */
 /* 
  * Copyright (C) 2008-2009 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -28,7 +28,7 @@
  */
 
 /* Canonical OS name */
-#define PJ_OS_NAME "x86_64-apple-darwin_ios"
+#define PJ_OS_NAME "arm-apple-darwin9"
 
 /* Legacy macros */
 /* #undef PJ_WIN32 */
@@ -129,9 +129,6 @@
  */
 #define PJ_SELECT_NEEDS_NFDS 0
 
-/* Was Linux epoll support enabled */
-/* #undef PJ_HAS_LINUX_EPOLL */
-
 /* Is errno a good way to retrieve OS errors?
  */
 #define PJ_HAS_ERRNO_VAR 1
@@ -170,7 +167,7 @@
 #define PJ_NATIVE_STRING_IS_UNICODE 0
 
 /* Pool alignment in bytes */
-#define PJ_POOL_ALIGNMENT 8
+#define PJ_POOL_ALIGNMENT 4
 
 /* The type of atomic variable value: */
 #define PJ_ATOMIC_VALUE_TYPE long
