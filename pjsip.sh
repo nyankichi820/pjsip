@@ -202,7 +202,7 @@ function lipo() {
     done < "${TMP}"
 }
 
-#download "${PJSIP_URL}" "${PJSIP_DIR}"
-#config_site "${PJSIP_DIR}"
-#armv7 && armv7s && arm64 && i386 && x86_64
+download "${PJSIP_URL}" "${PJSIP_DIR}"
+config_site "${PJSIP_DIR}"
+armv7 && armv7s && arm64 && i386 && x86_64
 lipo armv7 armv7s arm64 i386 x86_64
