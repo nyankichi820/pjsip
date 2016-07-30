@@ -11,7 +11,7 @@ function download() {
 }
 
 BASE_DIR="$1"
-PJSIP_URL="http://www.pjsip.org/release/2.5.1/pjproject-2.5.1.tar.bz2"
+PJSIP_URL="http://www.pjsip.org/release/2.5.5/pjproject-2.5.5.tar.bz2"
 PJSIP_DIR="$1/src"
 LIB_PATHS=("pjlib/lib" \
            "pjlib-util/lib" \
@@ -173,12 +173,14 @@ function lipo() {
             SRC_DIR="${DST_DIR}-${ARCH}"
 
             for FILE in `ls -l1 "${SRC_DIR}"`; do
-                OPTIONS="-arch ${ARCH} ${SRC_DIR}/${FILE}"
-                EXISTS=`cat "${TMP}" | grep "${FILE}"`
+                CP_FILE=`echo ${FILE} | sed -e "s/-[^-]*-apple-darwin_ios/-arm-apple-darwin_ios/g"`
+                cp ${SRC_DIR}/${FILE} ${SRC_DIR}/${CP_FILE}
+                OPTIONS="-arch ${ARCH} ${SRC_DIR}/${CP_FILE}"
+                EXISTS=`cat "${TMP}" | grep "${CP_FILE}"`
                 if [[ ${EXISTS} ]]; then
-                    SED_SRC="${FILE}$"
+                    SED_SRC="${CP_FILE}$"
                     SED_SRC="${SED_SRC//\//\\/}"
-                    SED_DST="${FILE} ${OPTIONS}"
+                    SED_DST="${CP_FILE} ${OPTIONS}"
                     SED_DST="${SED_DST//\//\\/}"
                     sed -i.bak "s/${SED_SRC}/${SED_DST}/" "${TMP}"
                     rm "${TMP}.bak"
@@ -200,7 +202,7 @@ function lipo() {
     done < "${TMP}"
 }
 
-download "${PJSIP_URL}" "${PJSIP_DIR}"
-config_site "${PJSIP_DIR}"
-armv7 && armv7s && arm64 && i386 && x86_64
+#download "${PJSIP_URL}" "${PJSIP_DIR}"
+#config_site "${PJSIP_DIR}"
+#armv7 && armv7s && arm64 && i386 && x86_64
 lipo armv7 armv7s arm64 i386 x86_64
