@@ -61,10 +61,10 @@ function config_site() {
     fi
 
     echo "#define PJ_CONFIG_IPHONE 1" >> "${PJSIP_CONFIG_PATH}"
-    if [[ ${OPENH264_PREFIX} ]]; then
-        echo "#define PJMEDIA_HAS_OPENH264_CODEC 1" >> "${PJSIP_CONFIG_PATH}"
-        HAS_VIDEO=1
-    fi
+    #if [[ ${OPENH264_PREFIX} ]]; then
+    #    echo "#define PJMEDIA_HAS_OPENH264_CODEC 1" >> "${PJSIP_CONFIG_PATH}"
+    #    HAS_VIDEO=1
+    #fi
     if [[ ${HAS_VIDEO} ]]; then
         echo "#define PJMEDIA_HAS_VIDEO 1" >> "${PJSIP_CONFIG_PATH}"
         echo "#define PJMEDIA_VIDEO_DEV_HAS_OPENGL 1" >> "${PJSIP_CONFIG_PATH}"
